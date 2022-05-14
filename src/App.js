@@ -1,12 +1,12 @@
 import "./App.css";
 import { Loader } from "./components";
 import { useAuth } from "./context";
-import { Auth, Dashboard } from "./pages";
+import { Home } from "./pages";
 
 function App() {
-  const { user, error, loading } = useAuth();
+  const { loading } = useAuth();
 
-  return <main>{loading ? <Loader /> : user ? <Dashboard /> : <Auth />}</main>;
+  return <main>{loading ? <Loader /> : <Home />}</main>;
 }
 
 export default App;
