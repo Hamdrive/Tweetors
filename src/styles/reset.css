@@ -1,0 +1,50 @@
+:root {
+  --primary-color: #1da1f3;
+  --primary-dark-color: #0b86d2;
+  /* --primary-light-color: #7c3aed; */
+  /* --primary-extra-light-color: rgba(124, 58, 237, 0.4); */
+  --secondary-color: #15202b;
+  /* --secondary-light-color: #fff; */
+  --primary-font-family: "Segoe UI", Helvetica;
+  --color-dim: #15202b;
+  --color-white: white;
+  --color-black: black;
+  --color-grey: grey;
+  --color-red: #f4212e;
+  --color-dark-grey: #657786;
+  --color-light-grey: #aab8c2;
+  --color-extra-light-grey: #e1e8ed;
+  --color-extra-extra-light-grey: #f5f8fa;
+}
+
+html, body {
+  position: relative;
+  margin: 0;
+  border: 0;
+  padding: 0;
+  width: 450px;
+  height: 600px;
+  overflow: hidden;
+}
+
+.w-100{
+    width: 100%;
+}
+
+.h-100{
+    height: 100%;
+}
+
+.outline:hover{
+    color: var(--color-white);
+}
+
+.input-section{
+    margin: 0 0;
+    margin-top: -10px;
+}
+
+.input-required::after{
+    font-size: var(--size-11);
+    color: var(--color-red);
+}

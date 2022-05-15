@@ -1,0 +1,97 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: var(--size-9);
+  background-color: var(--color-dim);
+  color: var(--color-white);
+}
+
+.div__image {
+  width: 144px;
+  height: 144px;
+}
+.div__image img {
+  width: 100%;
+  height: 100%;
+}
+
+.div__img--right {
+  right: -50%;
+}
+
+.section__about {
+    position: relative;
+  background-image: url("../assets/TweetorsHeroImg.png");
+  background-position: 175% -10%;
+  background-size: 75%;
+  background-repeat: no-repeat;
+  height: calc(600px - 240px - 40px);
+}
+
+.article__list {
+  width: 50%;
+  display: flex;
+}
+
+.article__list ul {
+  font-size: var(--size-10);
+}
+
+.div__cta {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%);
+}
+
+.section__signup{
+    height: calc(600px - 32px);
+    border: 2px solid var(--color-white);
+    border-radius: var(--radius-large);
+    padding: var(--size-9);
+}
+
+.div__loginAlt{
+    margin: var(--size-9) 0;
+}
+
+.btn{
+    border-radius: var(--radius);
+}
+
+.btn:hover {
+  transform: translateY(0);
+  background-color: var(--primary-dark-color);
+}
+
+.pointer{
+    cursor: pointer;
+}
+
+/* Input visibility toggle */
+
+.input-toggle{
+    position: relative;
+}
+.input-toggle .toggle-vis {
+  right: 0;
+  top: 50%;
+  transform: translate(-25%, -90%);
+  color: var(--primary-color);
+  padding: var(--size-5);
+  border-radius: 50%;
+  position: absolute;
+}
+
+.input-toggle .toggle-vis:hover {
+  background-color: var(--color-extra-light-grey);
+}
+
+.input-error{
+    color: var(--color-red);
+}
+
+.div__login{
+  margin-top: 7rem;
+}

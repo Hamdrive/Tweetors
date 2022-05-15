@@ -1,9 +1,10 @@
 import { useAuth } from "../../context";
+import { Dashboard } from "../dashboard/Dashboard";
 import { LogIn } from "../logIn/LogIn";
 import { SignUp } from "../signUp/SignUp";
 
 export const Auth = () => {
-  const { isNewUser } = useAuth();
+  const { user, isNewUser } = useAuth();
 
-  return <>{isNewUser ? <SignUp /> : <LogIn />}</>;
+  return <>{user ? <Dashboard /> : isNewUser ? <SignUp /> : <LogIn />}</>;
 };
