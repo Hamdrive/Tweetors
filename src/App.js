@@ -1,4 +1,3 @@
-import "./App.css";
 import { Loader } from "./components";
 import { useAuth } from "./context";
 import { Home } from "./pages";
@@ -6,7 +5,7 @@ import { Home } from "./pages";
 function App() {
   const { loading } = useAuth();
 
-  return <main>{loading ? <Loader /> : <Home />}</main>;
+  return <>{loading ? <Loader /> : <Home />}</>;
 }
 
 export default App;
