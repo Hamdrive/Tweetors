@@ -1,11 +1,21 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import { TwitterTweetEmbed } from "react-twitter-embed";
 import { ComponentLoader } from "../../components";
+import { useData } from "../../context";
 
 export const Dashboard = () => {
-  const [tabIndex, setTabIndex] = useState(0)
+  const [tabIndex, setTabIndex] = useState(0);
+
+  const { dataState, getExistingTweetors } = useData();
+
+  console.log(dataState, getExistingTweetors);
+
+  useEffect(() => {
+    getExistingTweetors();
+  }, []);
+
   return (
     <div className="flex-column h-100">
       <section className="flex-between">
@@ -38,10 +48,14 @@ export const Dashboard = () => {
             </TabList>
 
             <TabPanel className={"ov-y-scroll tabPanel"}>
-              <TwitterTweetEmbed tweetId={"1525378942554624000"} />
+              {dataState.tweetContentIds.map((id) =>
+                console.log(id)
+                // <TwitterTweetEmbed tweetId={id} />
+              )}
+              {/* <TwitterTweetEmbed tweetId={"1525378942554624000"} />
               <TwitterTweetEmbed tweetId={"1525808717324861441"} />
               <TwitterTweetEmbed tweetId={"1524445508407726081"} />
-              <TwitterTweetEmbed tweetId={"1525779769983242240"} />
+              <TwitterTweetEmbed tweetId={"1525779769983242240"} /> */}
               <ComponentLoader />
             </TabPanel>
             <TabPanel className={"ov-y-scroll tabPanel"}>

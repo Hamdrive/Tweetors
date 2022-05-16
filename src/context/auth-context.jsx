@@ -18,15 +18,6 @@ const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(false);
   const [isNewUser, setIsNewUser] = useState(true);
 
-  useEffect(() => {
-    const authStateChange = onAuthStateChanged(auth, (res) => {
-      res ? setUser(res) : setUser(null);
-      setError("");
-    });
-
-    return authStateChange;
-  }, []);
-
   const signupUser = async (name, email, password) => {
     try {
       setLoading(true);
@@ -34,7 +25,7 @@ const AuthProvider = ({ children }) => {
       const updateUserProfile = await updateProfile(auth.currentUser, {
         displayName: name,
       });
-      localStorage.setItem("userID", JSON.stringify(res.user.uid) )
+      localStorage.setItem("userID", JSON.stringify(res.user.uid));
       console.log(updateUserProfile);
     } catch (err) {
       setError(err);
@@ -56,9 +47,22 @@ const AuthProvider = ({ children }) => {
   };
 
   const logoutUser = () => {
-    localStorage.removeItem("userID")
+    localStorage.removeItem("userID");
     signOut(auth);
   };
+
+  useEffect(() => {
+    const authStateChange = onAuthStateChanged(auth, (res) => {
+      console.log(res);
+      if (res) {
+        setUser(res);
+        localStorage.setItem("userID", JSON.stringify(res?.uid));
+      } else setUser(null);
+      setError("");
+    });
+
+    return authStateChange;
+  }, []);
 
   const value = {
     user,
