@@ -1,7 +1,7 @@
 import { doc, getDoc } from "firebase/firestore";
 import { createContext, useContext, useEffect, useReducer } from "react";
 import { db } from "../config/firebase-config";
-import { fetchRecentTweet } from "../utils/twitterAPI/useTwitter";
+import { fetchRecentTweet, fetchTwitterUser } from "../utils/twitterAPI/useTwitter";
 import { dataReducer } from "./dataReducer";
 
 const DataContext = createContext({});
@@ -16,7 +16,10 @@ const DataProvider = ({ children }) => {
 
   const getExistingTweetorTweet = () => {
     console.log(dataState?.tweetUserIds);
-    dataState?.tweetUserIds?.map((id) => fetchRecentTweet(id));
+    fetchRecentTweet(
+      dataState?.tweetUserIds[dataState?.tweetUserIds.length - 1],
+      dataDispatch
+    );
   };
 
   const getExistingTweetors = async () => {
@@ -26,17 +29,11 @@ const DataProvider = ({ children }) => {
       const docRef = await doc(db, "Users", "txWipI5lmopr72EMhONQ");
       const getDocSnapshot = await getDoc(docRef);
       if (getDocSnapshot.exists()) {
-        dataDispatch({
-          type: "ADD_TWEETOR",
-          payload: getDocSnapshot?.data()?.tweetors,
-        });
+          getDocSnapshot?.data()?.tweetors.map((tweetor) => fetchTwitterUser(tweetor.tweetorID, dataDispatch))
       }
     } catch (error) {
       throw new Error(error);
     }
-    //get from User collection document and match userId
-    //run api call for each user and get recent tweet
-    //get recent tweet, add to state
   };
 
   const setNewTweetor = (username) => {

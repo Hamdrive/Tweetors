@@ -1,11 +1,15 @@
 import axios from "axios";
 
-export const fetchTwitterUser = async (username) => {
+export const fetchTwitterUser = async (username, dispatch) => {
   try {
     const res = await axios.get(
       `https://twitter-api-fetch-userdata.netlify.app/api/fetchUserData?username=${username}`
     );
-    if (res) return res?.data;
+    if (res)
+      dispatch({
+        type: "ADD_TWEETOR",
+        payload: res?.data?.data?.id,
+      });
   } catch (error) {
     throw new Error(error);
   }
@@ -18,7 +22,7 @@ export const fetchRecentTweet = async (userId, dispatch) => {
     );
     console.log(res);
     if (res?.data)
-      dispatch({ type: "ADD_TWEET_ID", payload: res?.data[0]?.id });
+      dispatch({ type: "ADD_TWEET_ID", payload: res?.data?.data[0]?.id });
   } catch (error) {
     throw new Error(error);
   }

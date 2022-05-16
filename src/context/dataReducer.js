@@ -4,13 +4,13 @@ export const dataReducer = (state, action) => {
     case "ADD_TWEETOR":
       return {
         ...state,
-        tweetUserIds: [...state.tweetUserIds, ...action.payload],
+        tweetUserIds: [...state.tweetUserIds, action.payload],
       };
 
     case "ADD_TWEET_ID":
       return {
         ...state,
-        tweetContetIds: [...state.tweetUserIds, ...action.payload],
+        tweetContentIds: [...state.tweetContentIds, action.payload],
       };
     default:
       return state;
