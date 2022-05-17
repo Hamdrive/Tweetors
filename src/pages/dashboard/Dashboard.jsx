@@ -3,7 +3,7 @@ import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import { TwitterTweetEmbed } from "react-twitter-embed";
 import { ComponentLoader } from "../../components";
-import { useData } from "../../context";
+import { useAuth, useData } from "../../context";
 import { Tweetor } from "../tweetor/Tweetor";
 
 export const Dashboard = () => {
@@ -15,6 +15,10 @@ export const Dashboard = () => {
     deleteTweetor,
   } = useData();
 
+  const {
+    user: { displayName },
+  } = useAuth();
+
   const handleDelete = (username) => {
     deleteTweetor(username);
   };
@@ -24,9 +28,11 @@ export const Dashboard = () => {
   }, []);
 
   return (
-    <div className="flex-column h-100">
+    <div className="flex-column h-100 ov-hidden">
       <section className="flex-between">
-        <span className="txt-md txt-semibold">Welcome aboard, Hamza 👋</span>
+        <span className="txt-md txt-semibold w-80">
+          Hello, {displayName} 👋
+        </span>
         <button className="btn btn-def btn-sm btn-logout">Log Out</button>
       </section>
       <section className="flex-column flex-grow-1 h-100">

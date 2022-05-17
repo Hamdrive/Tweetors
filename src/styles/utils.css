@@ -174,3 +174,7 @@
 .trash__btn {
   color: var(--color-red);
 }
+
+.w-80 {
+  width: 80%;
+}
