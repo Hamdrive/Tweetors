@@ -17,7 +17,9 @@
   --color-extra-extra-light-grey: #f5f8fa;
 }
 
-html, body, #root {
+html,
+body,
+#root {
   position: relative;
   margin: 0;
   border: 0;
@@ -27,24 +29,28 @@ html, body, #root {
   overflow: hidden;
 }
 
-.w-100{
-    width: 100%;
+svg {
+  height: auto;
 }
 
-.h-100{
-    height: 100%;
+.w-100 {
+  width: 100%;
 }
 
-.outline:hover{
-    color: var(--color-white);
+.h-100 {
+  height: 100%;
 }
 
-.input-section{
-    margin: 0 0;
-    margin-top: -10px;
+.outline:hover {
+  color: var(--color-white);
 }
 
-.input-required::after{
-    font-size: var(--size-11);
-    color: var(--color-red);
+.input-section {
+  margin: 0 0;
+  margin-top: -10px;
+}
+
+.input-required::after {
+  font-size: var(--size-11);
+  color: var(--color-red);
 }

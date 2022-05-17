@@ -142,8 +142,12 @@
   overflow-y: scroll;
 }
 
-.tabPanel {
-  max-height: 26rem;
+.tweetortabPanel {
+  height: 22rem;
+}
+
+.exploretabPanel {
+  height: 26rem;
 }
 
 .tweetor__main {
@@ -177,4 +181,31 @@
 
 .w-80 {
   width: 80%;
+}
+
+.searchbox {
+  position: relative;
+}
+
+.searchbox input {
+  padding: var(--size-5) var(--size-9) var(--size-5) var(--size-17);
+}
+
+.searchbox .search-icon {
+  color: var(--color-grey);
+  font-size: var(--size-9);
+  margin-left: var(--size-5);
+  position: absolute;
+}
+
+.div__emptyResult {
+  width: 15rem;
+  height: 15rem;
+}
+
+.tweetor__grid {
+  display: grid;
+  grid-template-columns: 20% 50% 15% 15%;
+  justify-items: center;
+  align-items: center;
 }
