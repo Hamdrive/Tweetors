@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import { TwitterTweetEmbed } from "react-twitter-embed";
-import { ComponentLoader } from "../../components";
+import { ComponentLoader, EmptyResult, Search } from "../../components";
 import { useAuth, useData } from "../../context";
 import { Tweetor } from "../tweetor/Tweetor";
 
@@ -13,6 +13,8 @@ export const Dashboard = () => {
     dataState: { tweetors, tweetIds },
     getExistingTweetors,
     deleteTweetor,
+    setNewTweetor,
+    loading,
   } = useData();
 
   const {
@@ -20,7 +22,12 @@ export const Dashboard = () => {
   } = useAuth();
 
   const handleDelete = (username) => {
+    console.log(username);
     deleteTweetor(username);
+  };
+
+  const handleSearchTweetor = (username) => {
+    setNewTweetor(username);
   };
 
   useEffect(() => {
@@ -60,30 +67,56 @@ export const Dashboard = () => {
               </Tab>
             </TabList>
 
-            <TabPanel className={"ov-y-scroll tabPanel"}>
-              {tweetors?.map((tweetor) => (
-                <Tweetor
-                  key={tweetor.id}
-                  tweetor={tweetor}
-                  handleDelete={handleDelete}
-                />
-              ))}
-              <TwitterTweetEmbed tweetId={"1525388160896643073"} />
-              <TwitterTweetEmbed tweetId={"1525429448103067648"} />
-              <TwitterTweetEmbed tweetId={"1525561780319027200"} />
-              <TwitterTweetEmbed tweetId={"1524807470845071368"} />
-              <TwitterTweetEmbed tweetId={"1523723819936284672"} />
-              <ComponentLoader />
+            <TabPanel>
+              <Search handleSearchTweetor={handleSearchTweetor} />
+              <div className="ov-y-scroll tweetortabPanel">
+                {!loading ? (
+                  tweetors?.length ? (
+                    tweetors?.map((tweetor) => (
+                      <Tweetor
+                        key={tweetor.id}
+                        tweetor={tweetor}
+                        handleDelete={handleDelete}
+                      />
+                    ))
+                  ) : (
+                    <EmptyResult text={"No Tweetors Found."} />
+                  )
+                ) : (
+                  [1, 2, 3, 4].map((num) => (
+                    <ComponentLoader
+                      key={num}
+                      width={"100%"}
+                      height={72}
+                      speed={1}
+                    />
+                  ))
+                )}
+              </div>
             </TabPanel>
-            <TabPanel className={"ov-y-scroll tabPanel"}>
-              {tweetIds?.map((id, index) => (
-                <TwitterTweetEmbed
-                  key={index}
-                  hide_thread={true}
-                  tweetId={id}
-                />
-              ))}
-              <ComponentLoader />
+            <TabPanel className={"ov-y-scroll exploretabPanel"}>
+              {!loading ? (
+                tweetors?.length ? (
+                  tweetIds?.map((id, index) => (
+                    <TwitterTweetEmbed
+                      key={index}
+                      hide_thread={true}
+                      tweetId={id}
+                    />
+                  ))
+                ) : (
+                  <EmptyResult text={"No Recent Tweets Found."} />
+                )
+              ) : (
+                [1, 2, 3, 4].map((num) => (
+                  <ComponentLoader
+                    key={num}
+                    width={"100%"}
+                    height={72}
+                    speed={1}
+                  />
+                ))
+              )}
             </TabPanel>
           </Tabs>
         </section>
