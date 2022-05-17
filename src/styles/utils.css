@@ -21,7 +21,7 @@
 }
 
 .section__about {
-    position: relative;
+  position: relative;
   background-image: url("../assets/TweetorsHeroImg.png");
   background-position: 175% -10%;
   background-size: 75%;
@@ -45,20 +45,20 @@
   transform: translate(-50%);
 }
 
-.section__signup{
-    height: calc(600px - 32px);
-    border: 2px solid var(--color-white);
-    border-radius: var(--radius-large);
-    padding: var(--size-9);
+.section__signup {
+  height: calc(600px - 32px);
+  border: 2px solid var(--color-white);
+  border-radius: var(--radius-large);
+  padding: var(--size-9);
 }
 
-.div__loginAlt{
-    margin: var(--size-9) 0;
+.div__loginAlt {
+  margin: var(--size-9) 0;
 }
 
-.btn{
-    border-radius: var(--radius);
-    transition: background-color linear 0.15s;
+.btn {
+  border-radius: var(--radius);
+  transition: background-color linear 0.15s;
 }
 
 .btn:hover {
@@ -66,19 +66,18 @@
   background-color: var(--primary-dark-color);
 }
 
-.btn:active{
+.btn:active {
   opacity: 0.9;
 }
 
-.pointer{
-    cursor: pointer;
+.pointer {
+  cursor: pointer;
 }
 
-/* Input visibility toggle */
-
-.input-toggle{
-    position: relative;
+.input-toggle {
+  position: relative;
 }
+
 .input-toggle .toggle-vis {
   right: 0;
   top: 50%;
@@ -93,55 +92,85 @@
   background-color: var(--color-extra-light-grey);
 }
 
-.input-error{
-    color: var(--color-red);
+.input-error {
+  color: var(--color-red);
 }
 
-.div__login{
+.div__login {
   margin-top: 7rem;
 }
 
-.btn-logout:hover{
+.btn-logout:hover {
   background-color: var(--color-red);
 }
 
-.mt-1{
+.mt-1 {
   margin-top: 1rem;
 }
 
-.min-h-100{
+.min-h-100 {
   min-height: 100%;
 }
 
-.tablist{
+.tablist {
   border-bottom: 1px solid var(--primary-color);
 }
 
-.tablist .selectedTab{
-    background: var(--primary-color);
+.tablist .selectedTab {
+  background: var(--primary-color);
   color: var(--color-white);
 }
 
-.singletab{
+.singletab {
   background-color: var(--color-white);
   color: var(--color-dim);
   border-top-left-radius: var(--radius);
   border-top-right-radius: var(--radius);
 }
 
-.singletab:hover, .singletab:focus{
+.singletab:hover,
+.singletab:focus {
   background-color: var(--primary-color);
   color: var(--color-white);
 }
 
-.contentLoader{
+.contentLoader {
   padding: 1rem;
 }
 
-.ov-y-scroll{
+.ov-y-scroll {
   overflow-y: scroll;
 }
 
-.tabPanel{
+.tabPanel {
   max-height: 26rem;
+}
+
+.tweetor__main {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  margin: 1rem 0;
+}
+
+.tweetor__section {
+  padding: var(--size-7) var(--size-9);
+  outline: 1px solid var(--color-extra-light-grey);
+}
+
+.tweetor__pfp {
+  width: var(--size-17);
+  height: var(--size-17);
+}
+
+.tweetor__pfp img {
+  border-radius: var(--radius-rounded);
+}
+
+.profile__btn {
+  color: var(--primary-color);
+}
+
+.trash__btn {
+  color: var(--color-red);
 }

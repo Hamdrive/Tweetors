@@ -1,7 +1,10 @@
-import { doc, getDoc } from "firebase/firestore";
+import { doc, getDoc, updateDoc, arrayRemove } from "firebase/firestore";
 import { createContext, useContext, useEffect, useReducer } from "react";
 import { db } from "../config/firebase-config";
-import { fetchRecentTweet, fetchTwitterUser } from "../utils/twitterAPI/useTwitter";
+import {
+  fetchRecentTweet,
+  fetchTwitterUser,
+} from "../utils/twitterAPI/useTwitter";
 import { dataReducer } from "./dataReducer";
 
 const DataContext = createContext({});
@@ -10,26 +13,28 @@ const useData = () => useContext(DataContext);
 
 const DataProvider = ({ children }) => {
   const [dataState, dataDispatch] = useReducer(dataReducer, {
-    tweetUserIds: [],
-    tweetContentIds: [],
+    tweetors: [],
+    tweetIds: [],
   });
 
   const getExistingTweetorTweet = () => {
-    console.log(dataState?.tweetUserIds);
-    fetchRecentTweet(
-      dataState?.tweetUserIds[dataState?.tweetUserIds.length - 1],
-      dataDispatch
+    dataDispatch({ type: "CLEAR_TWEET_IDS" });
+    dataState?.tweetors?.map((tweetor) =>
+      fetchRecentTweet(tweetor.id, dataDispatch)
     );
   };
 
   const getExistingTweetors = async () => {
     try {
       //get userId from localStorage
-    //   const userIdRef = JSON.parse(localStorage.getItem("userID"));
+      //   const userIdRef = JSON.parse(localStorage.getItem("userID"));
       const docRef = await doc(db, "Users", "txWipI5lmopr72EMhONQ");
       const getDocSnapshot = await getDoc(docRef);
       if (getDocSnapshot.exists()) {
-          getDocSnapshot?.data()?.tweetors.map((tweetor) => fetchTwitterUser(tweetor.tweetorID, dataDispatch))
+        dataDispatch({
+          type: "ADD_TWEETOR",
+          payload: getDocSnapshot?.data()?.tweetors,
+        });
       }
     } catch (error) {
       throw new Error(error);
@@ -42,8 +47,27 @@ const DataProvider = ({ children }) => {
     //add tweetorId
   };
 
-  const deleteTweetor = (username) => {
+  const deleteTweetor = async (username) => {
     //check if tweetor exists in doc
+    const checkTweetorExists = dataState?.tweetors?.find(
+      (tweetor) => tweetor.userName === username
+    );
+    if (checkTweetorExists) {
+      try {
+        const docRef = await doc(db, "Users", "txWipI5lmopr72EMhONQ");
+        const getDocSnapshot = await getDoc(docRef);
+        if (getDocSnapshot.exists()) {
+          console.log(checkTweetorExists.userName);
+          await updateDoc(docRef, {
+            tweetors: arrayRemove(checkTweetorExists),
+          });
+
+          getExistingTweetors();
+        }
+      } catch (error) {
+        throw new Error(error);
+      }
+    }
     //delete tweetor
   };
 
@@ -53,10 +77,10 @@ const DataProvider = ({ children }) => {
   };
 
   useEffect(() => {
-      dataState?.tweetUserIds.length > 0 && getExistingTweetorTweet();
-  }, [dataState?.tweetUserIds])
+    dataState?.tweetors?.length > 0 && getExistingTweetorTweet();
+  }, [dataState?.tweetors]);
 
-  const value = { dataState, dataDispatch, getExistingTweetors };
+  const value = { dataState, dataDispatch, getExistingTweetors, deleteTweetor };
   return <DataContext.Provider value={value}>{children}</DataContext.Provider>;
 };
 

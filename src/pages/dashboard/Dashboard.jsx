@@ -4,11 +4,20 @@ import "react-tabs/style/react-tabs.css";
 import { TwitterTweetEmbed } from "react-twitter-embed";
 import { ComponentLoader } from "../../components";
 import { useData } from "../../context";
+import { Tweetor } from "../tweetor/Tweetor";
 
 export const Dashboard = () => {
   const [tabIndex, setTabIndex] = useState(0);
 
-  const { dataState, getExistingTweetors } = useData();
+  const {
+    dataState: { tweetors, tweetIds },
+    getExistingTweetors,
+    deleteTweetor,
+  } = useData();
+
+  const handleDelete = (username) => {
+    deleteTweetor(username);
+  };
 
   useEffect(() => {
     getExistingTweetors();
@@ -46,6 +55,13 @@ export const Dashboard = () => {
             </TabList>
 
             <TabPanel className={"ov-y-scroll tabPanel"}>
+              {tweetors?.map((tweetor) => (
+                <Tweetor
+                  key={tweetor.id}
+                  tweetor={tweetor}
+                  handleDelete={handleDelete}
+                />
+              ))}
               <TwitterTweetEmbed tweetId={"1525388160896643073"} />
               <TwitterTweetEmbed tweetId={"1525429448103067648"} />
               <TwitterTweetEmbed tweetId={"1525561780319027200"} />
@@ -54,8 +70,12 @@ export const Dashboard = () => {
               <ComponentLoader />
             </TabPanel>
             <TabPanel className={"ov-y-scroll tabPanel"}>
-              {dataState.tweetContentIds.map((id, index) => (
-                <TwitterTweetEmbed key={index} hide_thread={true} tweetId={id} />
+              {tweetIds?.map((id, index) => (
+                <TwitterTweetEmbed
+                  key={index}
+                  hide_thread={true}
+                  tweetId={id}
+                />
               ))}
               <ComponentLoader />
             </TabPanel>
