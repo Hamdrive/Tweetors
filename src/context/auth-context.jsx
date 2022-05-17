@@ -34,6 +34,7 @@ const AuthProvider = ({ children }) => {
       const updateUserProfile = await updateProfile(auth.currentUser, {
         displayName: name,
       });
+      localStorage.setItem("userID", JSON.stringify(res.user.uid) )
       console.log(updateUserProfile);
     } catch (err) {
       setError(err);
@@ -55,8 +56,10 @@ const AuthProvider = ({ children }) => {
   };
 
   const logoutUser = () => {
+    localStorage.removeItem("userID")
     signOut(auth);
   };
+
   const value = {
     user,
     loading,
