@@ -13,10 +13,8 @@ export const initialErrors = {
 export const inputReducer = (state, { type, payload }) => {
   switch (type) {
     case "NAME":
-      console.log(payload)
       return { ...state, name: payload };
     case "EMAIL":
-      console.log(payload)
       return { ...state, email: payload };
     case "PASSWORD":
       return { ...state, password: payload };

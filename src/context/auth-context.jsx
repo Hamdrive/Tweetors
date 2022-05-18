@@ -5,6 +5,7 @@ import {
   onAuthStateChanged,
   signInWithEmailAndPassword,
   signOut,
+  updateProfile,
 } from "firebase/auth";
 import { doc, setDoc } from "firebase/firestore";
 
@@ -22,13 +23,16 @@ const AuthProvider = ({ children }) => {
     try {
       setLoading(true);
       const res = await createUserWithEmailAndPassword(auth, email, password);
-      await setDoc(doc(db, "Users", res.user.uid), {
+      await updateProfile(auth.currentUser, {
+        displayName: name,
+      });
+      await setDoc(doc(db, "Users", res?.user?.uid), {
         name: name,
         emailID: email,
         tweetors: [],
       });
 
-      localStorage.setItem("userID", JSON.stringify(res.user.uid));
+      localStorage.setItem("userID", res?.user?.uid);
     } catch (err) {
       setError(err);
     } finally {
@@ -40,7 +44,6 @@ const AuthProvider = ({ children }) => {
     try {
       setLoading(true);
       const res = await signInWithEmailAndPassword(auth, email, password);
-      console.log(res);
     } catch (err) {
       setError(err);
     } finally {
@@ -55,10 +58,9 @@ const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     const authStateChange = onAuthStateChanged(auth, (res) => {
-      console.log(res);
       if (res) {
         setUser(res);
-        localStorage.setItem("userID", JSON.stringify(res?.uid));
+        localStorage.setItem("userID", res?.uid);
       } else setUser(null);
       setError("");
     });

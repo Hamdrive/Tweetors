@@ -10,6 +10,7 @@ import {
   useContext,
   useEffect,
   useReducer,
+  useRef,
   useState,
 } from "react";
 import { db } from "../config/firebase-config";
@@ -25,6 +26,7 @@ const useData = () => useContext(DataContext);
 
 const DataProvider = ({ children }) => {
   const [loading, setLoading] = useState(false);
+  const searchError = useRef("");
   const [dataState, dataDispatch] = useReducer(dataReducer, {
     tweetors: [],
     tweetIds: [],
@@ -40,7 +42,7 @@ const DataProvider = ({ children }) => {
   const getExistingTweetors = async () => {
     try {
       setLoading(true);
-      const userIdRef = JSON.parse(localStorage.getItem("userID"));
+      const userIdRef = localStorage.getItem("userID");
       const docRef = await doc(db, "Users", userIdRef);
       const getDocSnapshot = await getDoc(docRef);
       if (getDocSnapshot.exists()) {
@@ -63,8 +65,11 @@ const DataProvider = ({ children }) => {
       try {
         setLoading(true);
         const newTweetorData = await fetchTwitterUser(username, dataDispatch);
-        if (newTweetorData) {
-          const userIdRef = JSON.parse(localStorage.getItem("userID"));
+        if (newTweetorData?.errors?.[0]?.title === "Not Found Error") {
+          searchError.current = `Could not find user with ${newTweetorData?.errors?.[0]?.value}`;
+          setLoading(false);
+        } else {
+          const userIdRef = localStorage.getItem("userID");
           const docRef = await doc(db, "Users", userIdRef);
           const getDocSnapshot = await getDoc(docRef);
           if (getDocSnapshot.exists()) {
@@ -88,7 +93,7 @@ const DataProvider = ({ children }) => {
     if (checkTweetorExists) {
       try {
         setLoading(true);
-        const userIdRef = JSON.parse(localStorage.getItem("userID"));
+        const userIdRef = localStorage.getItem("userID");
         const docRef = await doc(db, "Users", userIdRef);
         const getDocSnapshot = await getDoc(docRef);
         if (getDocSnapshot.exists()) {
@@ -116,6 +121,7 @@ const DataProvider = ({ children }) => {
     setNewTweetor,
     loading,
     setLoading,
+    searchError,
   };
   return <DataContext.Provider value={value}>{children}</DataContext.Provider>;
 };

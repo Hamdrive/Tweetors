@@ -21,7 +21,7 @@ export const SignUp = () => {
 
   const loginTestUser = (e) => {
     e.preventDefault();
-    loginUser("hamza@tweetors.com", "hamza123456");
+    loginUser("hamza@tweetors.com", "TweetorsRocks123");
   };
   const handleSubmit = (e) => {
     e.preventDefault();

@@ -6,7 +6,7 @@ export const Home = () => {
   const [homeClicked, setHomeClicked] = useState(false);
 
   return (
-    <main className="wrapper">
+    <>
       {homeClicked ? (
         <Auth />
       ) : (
@@ -38,6 +38,5 @@ export const Home = () => {
           </section>
         </>
       )}
-    </main>
-  );
+  </>);
 };
