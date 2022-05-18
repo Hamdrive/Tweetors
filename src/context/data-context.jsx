@@ -65,10 +65,8 @@ const DataProvider = ({ children }) => {
       try {
         setLoading(true);
         const newTweetorData = await fetchTwitterUser(username, dataDispatch);
-        console.log(newTweetorData?.errors?.[0]?.title);
         if (newTweetorData?.errors?.[0]?.title === "Not Found Error") {
           searchError.current = `Could not find user with ${newTweetorData?.errors?.[0]?.value}`;
-          console.log(searchError.current);
           setLoading(false);
         } else {
           const userIdRef = localStorage.getItem("userID");

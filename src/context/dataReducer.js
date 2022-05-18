@@ -1,5 +1,4 @@
 export const dataReducer = (state, action) => {
-  console.log(action.payload);
   switch (action.type) {
     case "ADD_TWEETOR":
     case "DELETE_TWEETOR":
