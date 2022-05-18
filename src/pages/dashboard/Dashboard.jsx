@@ -1,11 +1,19 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import { TwitterTweetEmbed } from "react-twitter-embed";
 import { ComponentLoader } from "../../components";
+import { useData } from "../../context";
 
 export const Dashboard = () => {
-  const [tabIndex, setTabIndex] = useState(0)
+  const [tabIndex, setTabIndex] = useState(0);
+
+  const { dataState, getExistingTweetors } = useData();
+
+  useEffect(() => {
+    getExistingTweetors();
+  }, []);
+
   return (
     <div className="flex-column h-100">
       <section className="flex-between">
@@ -26,30 +34,29 @@ export const Dashboard = () => {
                   tabIndex === 0 && "selectedTab"
                 } `}
               >
-                Explore
+                Your Tweetors
               </Tab>
               <Tab
                 className={`w-50 txt-center h4 txt-semibold py-sm pointer ${
                   tabIndex === 1 && "selectedTab"
                 } `}
               >
-                Your Tweetors
+                Tweets
               </Tab>
             </TabList>
 
-            <TabPanel className={"ov-y-scroll tabPanel"}>
-              <TwitterTweetEmbed tweetId={"1525378942554624000"} />
-              <TwitterTweetEmbed tweetId={"1525808717324861441"} />
-              <TwitterTweetEmbed tweetId={"1524445508407726081"} />
-              <TwitterTweetEmbed tweetId={"1525779769983242240"} />
-              <ComponentLoader />
-            </TabPanel>
             <TabPanel className={"ov-y-scroll tabPanel"}>
               <TwitterTweetEmbed tweetId={"1525388160896643073"} />
               <TwitterTweetEmbed tweetId={"1525429448103067648"} />
               <TwitterTweetEmbed tweetId={"1525561780319027200"} />
               <TwitterTweetEmbed tweetId={"1524807470845071368"} />
               <TwitterTweetEmbed tweetId={"1523723819936284672"} />
+              <ComponentLoader />
+            </TabPanel>
+            <TabPanel className={"ov-y-scroll tabPanel"}>
+              {dataState.tweetContentIds.map((id, index) => (
+                <TwitterTweetEmbed key={index} hide_thread={true} tweetId={id} />
+              ))}
               <ComponentLoader />
             </TabPanel>
           </Tabs>
