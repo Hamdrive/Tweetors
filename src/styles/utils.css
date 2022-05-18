@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   height: 100%;
-  padding: var(--size-9);
+  padding: var(--size-9) var(--size-9) var(--size-13);
   background-color: var(--color-dim);
   color: var(--color-white);
 }
@@ -237,4 +237,10 @@
 .footer__external:hover {
   color: var(--color-dim);
   transition: color linear 0.2;
+}
+
+.dashboard {
+  border: 2px solid var(--color-white);
+  border-radius: var(--radius-large);
+  padding: var(--size-5);
 }
