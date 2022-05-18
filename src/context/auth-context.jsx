@@ -5,6 +5,7 @@ import {
   onAuthStateChanged,
   signInWithEmailAndPassword,
   signOut,
+  updateProfile,
 } from "firebase/auth";
 import { doc, setDoc } from "firebase/firestore";
 
@@ -22,6 +23,9 @@ const AuthProvider = ({ children }) => {
     try {
       setLoading(true);
       const res = await createUserWithEmailAndPassword(auth, email, password);
+      await updateProfile(auth.currentUser, {
+        displayName: name,
+      });
       await setDoc(doc(db, "Users", res?.user?.uid), {
         name: name,
         emailID: email,
