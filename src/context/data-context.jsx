@@ -39,10 +39,9 @@ const DataProvider = ({ children }) => {
 
   const getExistingTweetors = async () => {
     try {
-      //get userId from localStorage
-      //   const userIdRef = JSON.parse(localStorage.getItem("userID"));
       setLoading(true);
-      const docRef = await doc(db, "Users", "txWipI5lmopr72EMhONQ");
+      const userIdRef = JSON.parse(localStorage.getItem("userID"));
+      const docRef = await doc(db, "Users", userIdRef);
       const getDocSnapshot = await getDoc(docRef);
       if (getDocSnapshot.exists()) {
         dataDispatch({
@@ -65,7 +64,8 @@ const DataProvider = ({ children }) => {
         setLoading(true);
         const newTweetorData = await fetchTwitterUser(username, dataDispatch);
         if (newTweetorData) {
-          const docRef = await doc(db, "Users", "txWipI5lmopr72EMhONQ");
+          const userIdRef = JSON.parse(localStorage.getItem("userID"));
+          const docRef = await doc(db, "Users", userIdRef);
           const getDocSnapshot = await getDoc(docRef);
           if (getDocSnapshot.exists()) {
             await updateDoc(docRef, {
@@ -88,10 +88,10 @@ const DataProvider = ({ children }) => {
     if (checkTweetorExists) {
       try {
         setLoading(true);
-        const docRef = await doc(db, "Users", "txWipI5lmopr72EMhONQ");
+        const userIdRef = JSON.parse(localStorage.getItem("userID"));
+        const docRef = await doc(db, "Users", userIdRef);
         const getDocSnapshot = await getDoc(docRef);
         if (getDocSnapshot.exists()) {
-          console.log(checkTweetorExists.userName);
           await updateDoc(docRef, {
             tweetors: arrayRemove(checkTweetorExists),
           });

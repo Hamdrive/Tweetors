@@ -19,6 +19,7 @@ export const Dashboard = () => {
 
   const {
     user: { displayName },
+    logoutUser,
   } = useAuth();
 
   const handleDelete = (username) => {
@@ -40,7 +41,9 @@ export const Dashboard = () => {
         <span className="txt-md txt-semibold w-80">
           Hello, {displayName} 👋
         </span>
-        <button className="btn btn-def btn-sm btn-logout">Log Out</button>
+        <button onClick={logoutUser} className="btn btn-def btn-sm btn-logout">
+          Log Out
+        </button>
       </section>
       <section className="flex-column flex-grow-1 h-100">
         <div className="my-1 flex-center">
