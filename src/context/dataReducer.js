@@ -2,16 +2,19 @@ export const dataReducer = (state, action) => {
   console.log(action.payload);
   switch (action.type) {
     case "ADD_TWEETOR":
+    case "DELETE_TWEETOR":
       return {
         ...state,
-        tweetUserIds: [...state.tweetUserIds, action.payload],
+        tweetors: [...action.payload],
       };
 
     case "ADD_TWEET_ID":
       return {
         ...state,
-        tweetContentIds: [...state.tweetContentIds, action.payload],
+        tweetIds: [...state.tweetIds, action.payload],
       };
+    case "CLEAR_TWEET_IDS":
+      return { ...state, tweetIds: [] };
     default:
       return state;
   }

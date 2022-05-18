@@ -1,12 +1,12 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import { auth } from "../config/firebase-config";
+import { auth, db } from "../config/firebase-config";
 import {
   createUserWithEmailAndPassword,
   onAuthStateChanged,
   signInWithEmailAndPassword,
   signOut,
-  updateProfile,
 } from "firebase/auth";
+import { doc, setDoc } from "firebase/firestore";
 
 const AuthContext = createContext({});
 
@@ -22,11 +22,13 @@ const AuthProvider = ({ children }) => {
     try {
       setLoading(true);
       const res = await createUserWithEmailAndPassword(auth, email, password);
-      const updateUserProfile = await updateProfile(auth.currentUser, {
-        displayName: name,
+      await setDoc(doc(db, "Users", res.user.uid), {
+        name: name,
+        emailID: email,
+        tweetors: [],
       });
+
       localStorage.setItem("userID", JSON.stringify(res.user.uid));
-      console.log(updateUserProfile);
     } catch (err) {
       setError(err);
     } finally {

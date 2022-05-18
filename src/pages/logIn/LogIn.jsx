@@ -11,13 +11,13 @@ export const LogIn = () => {
     inputDispatch,
     errorState,
     errorDispatch,
-    validateSignup,
+    validateLogin,
   } = useValidation();
 
-  const { name, email, password } = inputState;
-  const { emailError, passwordError, nameError } = errorState;
+  const { email, password } = inputState;
+  const { emailError, passwordError } = errorState;
 
-  const { signupUser, loginUser, loading, setIsNewUser } = useAuth();
+  const { loginUser, loading, setIsNewUser } = useAuth();
 
   const loginTestUser = (e) => {
     e.preventDefault();
@@ -25,10 +25,10 @@ export const LogIn = () => {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (validateSignup()) {
+    if (validateLogin()) {
       errorDispatch({ type: "CLEAR_ERRORS" });
       inputDispatch({ type: "CLEAR_INPUTS" });
-      signupUser(name, email, password);
+      loginUser(email, password);
     }
   };
 
@@ -37,7 +37,7 @@ export const LogIn = () => {
       <div className="flex-center">
         <span className="txt-lg txt-bold">LogIn </span>
       </div>
-      <form onSubmit={handleSubmit} className="form" novalidate>
+      <form className="form" novalidate>
         <div className="input-section">
           <label for="input" className="form-input input-required txt-reg">
             Email
@@ -89,7 +89,7 @@ export const LogIn = () => {
           </div>
         </div>
         <div className="div__login flex-center">
-          <button type="submit" className="btn btn-def btn-md w-100">
+          <button onClick={handleSubmit} className="btn btn-def btn-md w-100">
             {loading ? <Loader /> : "LogIn"}
           </button>
         </div>
