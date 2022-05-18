@@ -5,6 +5,7 @@ export const fetchTwitterUser = async (username) => {
     const res = await axios.get(
       `https://twitter-api-fetch-userdata.netlify.app/api/fetchUserData?username=${username}`
     );
+    if (res?.data?.errors) return res?.data;
     if (res?.data) return res?.data?.data;
   } catch (error) {
     throw new Error(error);

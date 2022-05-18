@@ -15,6 +15,7 @@ export const Dashboard = () => {
     deleteTweetor,
     setNewTweetor,
     loading,
+    searchError,
   } = useData();
 
   const {
@@ -71,7 +72,10 @@ export const Dashboard = () => {
             </TabList>
 
             <TabPanel>
-              <Search handleSearchTweetor={handleSearchTweetor} />
+              <Search
+                handleSearchTweetor={handleSearchTweetor}
+                searchError={searchError}
+              />
               <div className="ov-y-scroll tweetortabPanel">
                 {!loading ? (
                   tweetors?.length ? (
