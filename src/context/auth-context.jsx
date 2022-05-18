@@ -44,7 +44,6 @@ const AuthProvider = ({ children }) => {
     try {
       setLoading(true);
       const res = await signInWithEmailAndPassword(auth, email, password);
-      console.log(res);
     } catch (err) {
       setError(err);
     } finally {
@@ -59,7 +58,6 @@ const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     const authStateChange = onAuthStateChanged(auth, (res) => {
-      console.log(res);
       if (res) {
         setUser(res);
         localStorage.setItem("userID", res?.uid);

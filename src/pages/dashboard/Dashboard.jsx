@@ -24,7 +24,6 @@ export const Dashboard = () => {
   } = useAuth();
 
   const handleDelete = (username) => {
-    console.log(username);
     deleteTweetor(username);
   };
 
