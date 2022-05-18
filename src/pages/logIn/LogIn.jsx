@@ -17,7 +17,7 @@ export const LogIn = () => {
   const { email, password } = inputState;
   const { emailError, passwordError } = errorState;
 
-  const { loginUser, loading, setIsNewUser } = useAuth();
+  const { loginUser, loading, setLoginPage } = useAuth();
 
   const loginTestUser = (e) => {
     e.preventDefault();
@@ -98,7 +98,7 @@ export const LogIn = () => {
         <span className="">
           New to Tweetors?{" "}
           <span
-            onClick={() => setIsNewUser(true)}
+            onClick={() => setLoginPage(false)}
             className="txt-bold txt-underline pointer"
           >
             Sign Up!
