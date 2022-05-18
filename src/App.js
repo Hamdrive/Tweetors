@@ -1,11 +1,21 @@
 import { Loader } from "./components";
 import { useAuth } from "./context";
-import { Home } from "./pages";
+import { Dashboard, Home } from "./pages";
 
 function App() {
-  const { loading } = useAuth();
+  const { loading, user } = useAuth();
 
-  return <>{loading ? <Loader /> : <Home />}</>;
+  return (
+    <main className="wrapper">
+      {loading ? (
+        <div className="flex-center h-100">
+          <Loader />
+        </div>
+      ) : ( user ? <Dashboard /> :
+        <Home />
+      )}
+    </main>
+  );
 }
 
 export default App;

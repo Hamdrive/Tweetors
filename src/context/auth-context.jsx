@@ -22,13 +22,13 @@ const AuthProvider = ({ children }) => {
     try {
       setLoading(true);
       const res = await createUserWithEmailAndPassword(auth, email, password);
-      await setDoc(doc(db, "Users", res.user.uid), {
+      await setDoc(doc(db, "Users", res?.user?.uid), {
         name: name,
         emailID: email,
         tweetors: [],
       });
 
-      localStorage.setItem("userID", JSON.stringify(res.user.uid));
+      localStorage.setItem("userID", res?.user?.uid);
     } catch (err) {
       setError(err);
     } finally {
@@ -58,7 +58,7 @@ const AuthProvider = ({ children }) => {
       console.log(res);
       if (res) {
         setUser(res);
-        localStorage.setItem("userID", JSON.stringify(res?.uid));
+        localStorage.setItem("userID", res?.uid);
       } else setUser(null);
       setError("");
     });
