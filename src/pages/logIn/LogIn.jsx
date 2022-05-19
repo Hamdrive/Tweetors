@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { InputError, Loader } from "../../components";
+import { InputError } from "../../components";
 import { useAuth } from "../../context";
 import { useValidation } from "../../utils/validation/useValidation";
 
@@ -17,7 +17,7 @@ export const LogIn = () => {
   const { email, password } = inputState;
   const { emailError, passwordError } = errorState;
 
-  const { loginUser, loading, setLoginPage } = useAuth();
+  const { loginUser, setLoginPage } = useAuth();
 
   const loginTestUser = (e) => {
     e.preventDefault();
