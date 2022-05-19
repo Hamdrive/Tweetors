@@ -12,7 +12,7 @@ export const Footer = () => {
           referrerPolicy="no-referrer"
           className="footer__external"
         >
-          Hamza <i class="fas fa-xs fa-external-link-alt"></i>
+          Hamza <i className="fas fa-xs fa-external-link-alt"></i>
         </a>
       </span>
     </footer>

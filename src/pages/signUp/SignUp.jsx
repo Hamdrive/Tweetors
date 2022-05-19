@@ -37,16 +37,19 @@ export const SignUp = () => {
       <div className="flex-center">
         <span className="txt-lg txt-bold">SignUp </span>
       </div>
-      <form onSubmit={handleSubmit} className="form" novalidate>
+      <form onSubmit={handleSubmit} className="form" noValidate>
         <div className="input-section">
-          <label for="input" className="form-input input-required txt-reg">
+          <label
+            htmlFor="name-input"
+            className="form-input input-required txt-reg"
+          >
             Name
           </label>
           <input
             type="text"
             className="input-corner input-md border-2"
-            name="input"
-            id="input"
+            name="name-input"
+            id="name-input"
             value={name}
             onChange={(e) =>
               inputDispatch({
@@ -60,14 +63,17 @@ export const SignUp = () => {
           <InputError errorMessage={nameError} />
         </div>
         <div className="input-section">
-          <label for="input" className="form-input input-required txt-reg">
+          <label
+            htmlFor="email-input"
+            className="form-input input-required txt-reg"
+          >
             Email
           </label>
           <input
             type="text"
             className="input-corner input-md border-2"
-            name="input"
-            id="input"
+            name="email-input"
+            id="email-input"
             value={email}
             onChange={(e) =>
               inputDispatch({
@@ -82,7 +88,7 @@ export const SignUp = () => {
         </div>
 
         <div className="input-section">
-          <label for="input" className="form-input input-required txt-reg">
+          <label htmlFor="input" className="form-input input-required txt-reg">
             Password
           </label>
           <div className="input-toggle">
