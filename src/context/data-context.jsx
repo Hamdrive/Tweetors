@@ -64,21 +64,24 @@ const DataProvider = ({ children }) => {
     if (!checkTweetorExists) {
       try {
         setLoading(true);
-        const newTweetorData = await fetchTwitterUser(username, dataDispatch);
-        if (newTweetorData?.errors?.[0]?.title === "Not Found Error") {
-          searchError.current = `Could not find user with ${newTweetorData?.errors?.[0]?.value}`;
-          setLoading(false);
-        } else {
+        const tweetorResponse = await fetchTwitterUser(username);
+        if (tweetorResponse.status === 200) {
           const userIdRef = localStorage.getItem("userID");
           const docRef = await doc(db, "Users", userIdRef);
           const getDocSnapshot = await getDoc(docRef);
           if (getDocSnapshot.exists()) {
             await updateDoc(docRef, {
-              tweetors: arrayUnion(newTweetorData),
+              tweetors: arrayUnion(tweetorResponse?.data?.data?.[0]),
             });
 
             getExistingTweetors();
           }
+        } else if (tweetorResponse.status === 500) {
+          searchError.current = `Could not find user with ${username}`;
+          setLoading(false);
+        } else {
+          searchError.current = `Something went wrong on our end`;
+          setLoading(false);
         }
       } catch (error) {
         throw new Error(error);
