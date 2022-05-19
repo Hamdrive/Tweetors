@@ -36,7 +36,7 @@ export const Dashboard = () => {
   }, []);
 
   return (
-    <div className="flex-column h-100 ov-hidden">
+    <div className="flex-column h-100 ov-hidden dashboard">
       <section className="flex-between">
         <span className="txt-md txt-semibold w-80">
           Hello, {displayName} 👋

@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   height: 100%;
-  padding: var(--size-9);
+  padding: var(--size-9) var(--size-9) var(--size-13);
   background-color: var(--color-dim);
   color: var(--color-white);
 }
@@ -40,7 +40,7 @@
 
 .div__cta {
   position: absolute;
-  bottom: 0;
+  bottom: 15%;
   left: 50%;
   transform: translate(-50%);
 }
@@ -53,7 +53,7 @@
 }
 
 .div__loginAlt {
-  margin: var(--size-9) 0;
+  margin: var(--size-7) 0;
 }
 
 .btn {
@@ -108,7 +108,7 @@
   margin-top: 1rem;
 }
 
-.my-md{
+.my-md {
   margin: var(--size-7) 0;
 }
 
@@ -162,11 +162,11 @@
   padding: 0 var(--size-5);
 }
 
-.tweetor__main:first-child{
+.tweetor__main:first-child {
   margin-top: 0;
 }
 
-.tweetor__main:last-child{
+.tweetor__main:last-child {
   margin-bottom: 0;
 }
 
@@ -222,4 +222,25 @@
   grid-template-columns: 20% 50% 15% 15%;
   justify-items: center;
   align-items: center;
+}
+
+.footer__main {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: var(--size-15);
+  background-color: var(--primary-color);
+  color: var(--color-white);
+}
+
+.footer__external:hover {
+  color: var(--color-dim);
+  transition: color linear 0.2;
+}
+
+.dashboard {
+  border: 2px solid var(--color-white);
+  border-radius: var(--radius-large);
+  padding: var(--size-5);
 }

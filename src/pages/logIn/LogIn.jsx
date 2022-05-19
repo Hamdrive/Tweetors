@@ -17,7 +17,7 @@ export const LogIn = () => {
   const { email, password } = inputState;
   const { emailError, passwordError } = errorState;
 
-  const { loginUser, loading, setIsNewUser } = useAuth();
+  const { loginUser, loading, setLoginPage } = useAuth();
 
   const loginTestUser = (e) => {
     e.preventDefault();
@@ -90,7 +90,7 @@ export const LogIn = () => {
         </div>
         <div className="div__login flex-center">
           <button onClick={handleSubmit} className="btn btn-def btn-md w-100">
-            {loading ? <Loader /> : "LogIn"}
+            LogIn
           </button>
         </div>
       </form>
@@ -98,7 +98,7 @@ export const LogIn = () => {
         <span className="">
           New to Tweetors?{" "}
           <span
-            onClick={() => setIsNewUser(true)}
+            onClick={() => setLoginPage(false)}
             className="txt-bold txt-underline pointer"
           >
             Sign Up!
@@ -110,7 +110,7 @@ export const LogIn = () => {
           className="btn btn-def btn-md outline w-100"
           onClick={loginTestUser}
         >
-          {loading ? <Loader /> : "Login with test credentials"}
+          Login with test credentials
         </button>
       </div>
     </section>

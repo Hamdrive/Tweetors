@@ -17,7 +17,7 @@ export const SignUp = () => {
   const { name, email, password } = inputState;
   const { emailError, passwordError, nameError } = errorState;
 
-  const { signupUser, loginUser, loading, setIsNewUser } = useAuth();
+  const { signupUser, loginUser, loading, setLoginPage } = useAuth();
 
   const loginTestUser = (e) => {
     e.preventDefault();
@@ -111,25 +111,20 @@ export const SignUp = () => {
         </div>
         <div className="flex-center">
           <button type="submit" className="btn btn-def btn-md w-100">
-            {loading ? <Loader /> : "SignUp"}
+            SignUp
           </button>
         </div>
       </form>
       <div className="div__loginAlt flex-center">
         <span className="">
           Already a member?{" "}
-          <span onClick={() => setIsNewUser(false)} className="txt-bold txt-underline pointer">
+          <span
+            onClick={() => setLoginPage(true)}
+            className="txt-bold txt-underline pointer"
+          >
             Log In!
           </span>
         </span>
-      </div>
-      <div className="flex-center">
-        <button
-          className="btn btn-def btn-md outline w-100"
-          onClick={loginTestUser}
-        >
-          {loading ? <Loader /> : "Login with test credentials"}
-        </button>
       </div>
     </section>
   );
