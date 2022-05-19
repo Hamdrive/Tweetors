@@ -111,7 +111,7 @@ export const SignUp = () => {
         </div>
         <div className="flex-center">
           <button type="submit" className="btn btn-def btn-md w-100">
-            {loading ? <Loader /> : "SignUp"}
+            SignUp
           </button>
         </div>
       </form>
@@ -126,14 +126,6 @@ export const SignUp = () => {
           </span>
         </span>
       </div>
-      {/* <div className="flex-center">
-        <button
-          className="btn btn-def btn-md outline w-100"
-          onClick={loginTestUser}
-        >
-          {loading ? <Loader /> : "Login with test credentials"}
-        </button>
-      </div> */}
     </section>
   );
 };
