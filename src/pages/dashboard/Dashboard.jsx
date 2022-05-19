@@ -75,7 +75,7 @@ export const Dashboard = () => {
                 handleSearchTweetor={handleSearchTweetor}
                 searchError={searchError}
               />
-              <div className="ov-y-scroll tweetortabPanel">
+              <div className="ov-y-auto tweetortabPanel">
                 {!loading ? (
                   tweetors?.length ? (
                     tweetors?.map((tweetor) => (
@@ -100,7 +100,7 @@ export const Dashboard = () => {
                 )}
               </div>
             </TabPanel>
-            <TabPanel className={"ov-y-scroll exploretabPanel"}>
+            <TabPanel className={"ov-y-auto exploretabPanel"}>
               {!loading ? (
                 tweetors?.length ? (
                   tweetIds?.map((id, index) => (

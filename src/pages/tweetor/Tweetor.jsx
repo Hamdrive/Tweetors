@@ -9,7 +9,7 @@ export const Tweetor = ({ tweetor, handleDelete }) => {
         <div className="tweetor__pfp mx-auto">
           <img src={profile_image_url} alt="Tweetor pfp" />
         </div>
-        <p className="h4 txt-regular tweetor__name">{name}</p>
+        <p className="h4 txt-regular txt-left w-100 tweetor__name">{name}</p>
         <a
           href={`https://twitter.com/${username}`}
           target="_blank"

@@ -1,8 +1,8 @@
 .wrapper {
   display: flex;
   flex-direction: column;
-  height: 100%;
-  padding: var(--size-9) var(--size-9) var(--size-13);
+  height: 38rem;
+  padding: var(--size-7) var(--size-7);
   background-color: var(--color-dim);
   color: var(--color-white);
 }
@@ -47,7 +47,7 @@
 
 .section__signup {
   height: calc(600px - 32px);
-  border: 2px solid var(--color-white);
+  border: 2px solid var(--color-light-grey);
   border-radius: var(--radius-large);
   padding: var(--size-9);
 }
@@ -146,6 +146,10 @@
   overflow-y: scroll;
 }
 
+.ov-y-auto{
+  overflow-y: auto;
+}
+
 .tweetortabPanel {
   height: 22rem;
 }
@@ -172,8 +176,8 @@
 
 .tweetor__section {
   padding: var(--size-7) var(--size-9);
-  border-top: 1px solid var(--color-extra-light-grey);
-  border-bottom: 1px solid var(--color-extra-light-grey);
+  border-top: 1px solid var(--color-light-grey);
+  border-bottom: 1px solid var(--color-light-grey);
 }
 
 .tweetor__pfp {
@@ -199,10 +203,13 @@
 
 .searchbox {
   position: relative;
+  margin-right: var(--size-9);
 }
 
 .searchbox input {
   padding: var(--size-5) var(--size-9) var(--size-5) var(--size-17);
+  font-size: var(--size-9);
+  height: 100%;
 }
 
 .searchbox .search-icon {
@@ -240,7 +247,7 @@
 }
 
 .dashboard {
-  border: 2px solid var(--color-white);
+  border: 2px solid var(--color-light-grey);
   border-radius: var(--radius-large);
   padding: var(--size-5);
 }

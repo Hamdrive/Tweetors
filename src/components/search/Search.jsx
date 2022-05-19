@@ -17,7 +17,7 @@ export const Search = ({ handleSearchTweetor, searchError }) => {
           <div className="fas fa-search search-icon"></div>
           <label htmlFor="searchbar"></label>
           <input
-            className="input-corner input-sm border-2 w-100"
+            className="input-corner input-md border-2 w-100"
             type="search"
             name="searchbar"
             id="searchbar"
@@ -33,9 +33,9 @@ export const Search = ({ handleSearchTweetor, searchError }) => {
         <button
           disabled={!input.length > 0}
           onClick={handleSearchClick}
-          className="btn btn-def btn-sm w-30"
+          className="btn btn-def btn-sm txt-reg w-30"
         >
-          Search
+          Add
         </button>
       </div>
       {searchError.current && <InputError errorMessage={searchError.current} />}
