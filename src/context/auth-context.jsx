@@ -43,7 +43,7 @@ const AuthProvider = ({ children }) => {
   const loginUser = async (email, password) => {
     try {
       setLoading(true);
-      const res = await signInWithEmailAndPassword(auth, email, password);
+      await signInWithEmailAndPassword(auth, email, password);
     } catch (err) {
       setError(err);
     } finally {

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { InputError, Loader } from "../../components";
+import { InputError } from "../../components";
 import { useAuth } from "../../context";
 import { useValidation } from "../../utils/validation/useValidation";
 
@@ -17,7 +17,7 @@ export const LogIn = () => {
   const { email, password } = inputState;
   const { emailError, passwordError } = errorState;
 
-  const { loginUser, loading, setLoginPage } = useAuth();
+  const { loginUser, setLoginPage } = useAuth();
 
   const loginTestUser = (e) => {
     e.preventDefault();
@@ -37,16 +37,16 @@ export const LogIn = () => {
       <div className="flex-center">
         <span className="txt-lg txt-bold">LogIn </span>
       </div>
-      <form className="form" novalidate>
+      <form className="form" noValidate>
         <div className="input-section">
-          <label for="input" className="form-input input-required txt-reg">
+          <label htmlFor="email-input" className="form-input input-required txt-reg">
             Email
           </label>
           <input
             type="text"
             className="input-corner input-md border-2"
-            name="input"
-            id="input"
+            name="email-input"
+            id="email-input"
             value={email}
             onChange={(e) =>
               inputDispatch({
@@ -61,7 +61,7 @@ export const LogIn = () => {
         </div>
 
         <div className="input-section">
-          <label for="input" className="form-input input-required txt-reg">
+          <label htmlFor="password-input" className="form-input input-required txt-reg">
             Password
           </label>
           <div className="input-toggle">
@@ -74,8 +74,8 @@ export const LogIn = () => {
             <input
               type={showPass ? "text" : "password"}
               className="input-corner input-md border-2 pr-4"
-              name="password"
-              id="password"
+              name="password-input"
+              id="password-input"
               value={password}
               onChange={(e) =>
                 inputDispatch({
