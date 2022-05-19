@@ -65,7 +65,7 @@ const DataProvider = ({ children }) => {
       try {
         setLoading(true);
         const tweetorResponse = await fetchTwitterUser(username);
-        if (tweetorResponse.status === 200) {
+        if (tweetorResponse?.data?.data) {
           const userIdRef = localStorage.getItem("userID");
           const docRef = await doc(db, "Users", userIdRef);
           const getDocSnapshot = await getDoc(docRef);
@@ -76,7 +76,7 @@ const DataProvider = ({ children }) => {
 
             getExistingTweetors();
           }
-        } else if (tweetorResponse.status === 500) {
+        } else if (tweetorResponse?.data?.errors) {
           searchError.current = `Could not find user with ${username}`;
           setLoading(false);
         } else {
