@@ -10,10 +10,10 @@ export const dataReducer = (state, action) => {
     case "ADD_TWEET_ID":
       return {
         ...state,
-        tweetIds: [...state.tweetIds, action.payload],
+        tweets: [...state.tweets, action.payload],
       };
     case "CLEAR_TWEET_IDS":
-      return { ...state, tweetIds: [] };
+      return { ...state, tweets: [] };
     default:
       return state;
   }

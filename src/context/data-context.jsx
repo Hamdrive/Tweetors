@@ -29,13 +29,13 @@ const DataProvider = ({ children }) => {
   const searchError = useRef("");
   const [dataState, dataDispatch] = useReducer(dataReducer, {
     tweetors: [],
-    tweetIds: [],
+    tweets: [],
   });
 
   const getExistingTweetorTweet = () => {
     dataDispatch({ type: "CLEAR_TWEET_IDS" });
     dataState?.tweetors?.map((tweetor) =>
-      fetchRecentTweet(tweetor.id, dataDispatch)
+      fetchRecentTweet(tweetor, dataDispatch)
     );
   };
 

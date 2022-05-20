@@ -12,14 +12,16 @@ export const fetchTwitterUser = async (username) => {
   }
 };
 
-export const fetchRecentTweet = async (userId, dispatch) => {
+export const fetchRecentTweet = async (tweetor, dispatch) => {
   try {
     const res = await axios.get(
-      `https://twitter-mentors.vercel.app/api/getTwitterUserTweets?userID=${userId}`
+      `https://twitter-mentors.vercel.app/api/getTwitterUserTweets?userID=${tweetor.id}`
     );
-
-    if (res?.data?.data.hasOwnProperty("referenced_tweets")) return;
-    else dispatch({ type: "ADD_TWEET_ID", payload: res?.data?.data[0]?.id });
+    if (res?.data?.data?.[0])
+      dispatch({
+        type: "ADD_TWEET_ID",
+        payload: { ...tweetor, recentTweet: res.data.data[0] },
+      });
   } catch (error) {
     throw new Error(error);
   }
