@@ -1,70 +1,71 @@
-# Getting Started with Create React App
+<div align="center">
+  <img src="/src/assets/TweetorsLogo.png" height="200" width="200" alt="logo"/>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Tweetors
 
-## Available Scripts
+### A twitter extension to track your mentor and their tweets.
 
-In the project directory, you can run:
+![Forks](https://img.shields.io/github/forks/Hamdrive/Tweetors)
+![Stars](https://img.shields.io/github/stars/Hamdrive/Tweetors)
 
-### `npm start`
+ </div>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+---
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## How to run the app locally?
 
-### `npm test`
+```
+$ git clone https://github.com/Hamdrive/Tweetors.git
+$ cd Tweetors
+$ npm install
+$ npm start
+```
+*Don't forget to cleanup the preview GIF!*
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+---
 
-### `npm run build`
+## About Tweetors
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+* The idea to create Tweetors came about due to the way Twitter's algorithm currently serves content.
+-  We had noticed that offlate, we would not see the latest tweets from certain Twitter users, leading to many to miss out on latest bits of information.
+* Thus, we at Tweetors, decided to take the problem into our own hands, and have created an extension where users can create their own accounts independent of their Twitter credentials, and can easily keep a list of their preferred twitter users (or as we like to call them, Tweetors), and can also instantly view their most recent tweet.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+---
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Features
 
-### `npm run eject`
+- Landing Page with about section and simple and clean illustrations, explaining the purpose of Tweetors.
+* Authentication Pages - User can easily Signup to create a new account, Login using their existing credentials or even use the test credentials to explore the extension before commiting to use it.
+User can also easily logout from the dashboard
+- Dashboard Page - User is greeted with a dashboard which prominently displays two tabbed sections. User can view only one tab section at a time.
+* Your Tweetors Page(Tab) - User can add new twitter users using the search bar, User can also view existing Tweetors, each card prominently displaying the Tweetor profile picture, name and a direct link to their profile page (opens in a new tab). User can also easily delete the Tweetor from their list..
+- Tweets Page(Tab) - User can easily view the most recent tweet from their Tweetors, each card displays the most recent tweet content along with a button which User can click on to view the tweet (opens in a new tab).
+* Footer - User can acknowledge the creator of Tweetor and also check out their social profile (opens in a new tab).
+- Dimensions of extension: 600px x 450px.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+---
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Tech Stack and Tools
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- React JS
+- React Context API + useReducer
+- PowertrainUI for CSS and components
+- StorySet and unDraw for illustrations
+- Backend setup on Firestore
+- Authentication setup on Firebase
+- Twitter API v2 for fetching user data
+- Vercel for hosting Serverless Functions
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+---
 
-## Learn More
+## Get the extension
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+You can easily get the lastest version of Tweetors from the official [Chrome Webstore page]()
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+---
 
-### Code Splitting
+## Demo Video
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+![Tweetors Preview Video](/src/assets/DemoVideo.gif)
 
-### Analyzing the Bundle Size
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
