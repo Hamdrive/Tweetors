@@ -40,7 +40,7 @@
 
 .div__cta {
   position: absolute;
-  bottom: 15%;
+  bottom: 5%;
   left: 50%;
   transform: translate(-50%);
 }
@@ -110,6 +110,10 @@
 
 .my-md {
   margin: var(--size-7) 0;
+}
+
+.mr-1 {
+  margin-right: 1rem;
 }
 
 .min-h-100 {
