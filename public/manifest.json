@@ -9,9 +9,6 @@
     "default_popup": "index.html",
     "default_title": "Open Tweetors"
   },
-    "host_permissions": [
-    "<all_urls>"
-  ],
   "icons": {
     "16": "icons.png",
     "48": "icons.png",
