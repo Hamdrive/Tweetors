@@ -1,13 +1,13 @@
 {
   "manifest_version": 3,
-  "name": "Twitter Mentors",
+  "name": "Tweetors",
   "description": "Twitter extension to follow your mentor and their tweets",
   "author": "Hamza Husein",
-  "version": "1.0.0",
+  "version": "1.0.3",
   "action": {
     "default_icon": "icons.png",
     "default_popup": "index.html",
-    "default_title": "Open Twitter Mentors"
+    "default_title": "Open Tweetors"
   },
     "host_permissions": [
     "<all_urls>"
@@ -17,8 +17,8 @@
     "notifications"
  ],
   "icons": {
-    "16": "logo512.png",
-    "48": "logo512.png",
-    "128": "logo512.png"
+    "16": "icons.png",
+    "48": "icons.png",
+    "128": "icons.png"
   }
 }
