@@ -1,7 +1,7 @@
 .wrapper {
   display: flex;
   flex-direction: column;
-  height: 38rem;
+  height: 35rem;
   padding: var(--size-7) var(--size-7);
   background-color: var(--color-dim);
   color: var(--color-white);
@@ -146,16 +146,16 @@
   overflow-y: scroll;
 }
 
-.ov-y-auto{
+.ov-y-auto {
   overflow-y: auto;
 }
 
 .tweetortabPanel {
-  height: 20rem;
+  height: 17rem;
 }
 
 .exploretabPanel {
-  height: 26rem;
+  height: 17rem;
 }
 
 .tweetor__main {
