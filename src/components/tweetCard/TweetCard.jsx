@@ -12,7 +12,7 @@ export const TweetCard = ({ tweet }) => {
 
   return (
     <>
-      <blockquote className="twitter-tweet flex-column">
+      <blockquote className="twitter-tweet flex-column w-100">
         <div className="flex-row my-1">
           <div className="tweetor__pfp mr-1">
             <img src={profile_image_url} alt="Tweetor pfp" />

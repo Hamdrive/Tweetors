@@ -8,7 +8,7 @@ blockquote.twitter-tweet {
   border-style: solid;
   border-width: 1px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
-  margin: var(--size-4) var(--size-3) var(--size-4) 0;
+  margin: var(--size-4) 0;
   padding: 0 16px 16px 16px;
   max-width: 468px;
   background-color: var(--color-white);
