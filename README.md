@@ -60,7 +60,7 @@ User can also easily logout from the dashboard
 
 ## Get the extension
 
-You can easily get the lastest version of Tweetors from the official [Chrome Webstore page]()
+You can easily get the lastest version of Tweetors from the official [Chrome Webstore page](https://chrome.google.com/webstore/detail/dbmaadekfclglpjgamoimffccbenifib)
 
 ---
 
