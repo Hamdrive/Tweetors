@@ -2,7 +2,7 @@ const fetch = require("node-fetch");
 
 const handler = async (req, res) => {
   const { userID } = req.query;
-  const url = `https://api.twitter.com/2/users/${userID}/tweets?expansions=referenced_tweets.id&exclude=retweets,replies`;
+  const url = `https://api.twitter.com/2/users/${userID}/tweets?tweet.fields=created_at&expansions=referenced_tweets.id&exclude=retweets,replies`;
 
   try {
     const response = await fetch(url, {

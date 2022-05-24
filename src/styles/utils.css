@@ -105,7 +105,11 @@
 }
 
 .mt-1 {
-  margin-top: 1rem;
+  margin-top: var(--size-9);
+}
+
+.mb-1{
+  margin-bottom: var(--size-9);
 }
 
 .my-md {
@@ -190,7 +194,20 @@
 }
 
 .tweetor__pfp img {
+  width: 100%;
+  height: 100%;
   border-radius: var(--radius-rounded);
+}
+
+.tweet__date{
+  color: var(--color-dark-grey);
+  font-size: var(--size-9);
+}
+
+.tweet__body{
+  border-bottom: 1px solid var(--color-light-grey);
+  padding-bottom: var(--size-3);
+  margin-bottom: var(--size-7);
 }
 
 .profile__btn {
