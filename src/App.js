@@ -1,4 +1,4 @@
-import { Footer, Loader } from "./components";
+import { Footer, Loader, Offline } from "./components";
 import { useAuth } from "./context";
 import { Dashboard, Home } from "./pages";
 
@@ -8,7 +8,7 @@ function App() {
   return (
     <>
       <main className="wrapper">
-        {loading ? (
+        {navigator.onLine ? loading ? (
           <div className="flex-center h-100">
             <Loader />
           </div>
@@ -16,7 +16,7 @@ function App() {
           <Dashboard />
         ) : (
           <Home />
-        )}
+        ) : <Offline />}
       </main>
       <Footer />
     </>
