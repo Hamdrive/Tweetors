@@ -106,7 +106,7 @@ export const SignUp = () => {
                   payload: e.target.value,
                 })
               }
-              placeholder={showPass ? "John123456" : "**********"}
+              placeholder={showPass ? "john123456" : "**********"}
             />
             <InputError errorMessage={passwordError} />
           </div>
