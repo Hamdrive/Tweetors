@@ -3,7 +3,7 @@
   "name": "Tweetors",
   "description": "Twitter extension to follow your mentor and their tweets",
   "author": "Hamza Husein",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "action": {
     "default_icon": "icons.png",
     "default_popup": "index.html",

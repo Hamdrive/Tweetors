@@ -5,5 +5,6 @@ import { Search } from "./search/Search";
 import { EmptyResult } from "./emptyResult/EmptyResult";
 import { Footer } from "./footer/Footer";
 import { TweetCard } from "./tweetCard/TweetCard";
+import { Offline } from "./offline/Offline";
 
-export { Loader, InputError, ComponentLoader, Search, EmptyResult, Footer, TweetCard };
+export { Loader, InputError, ComponentLoader, Search, EmptyResult, Footer, TweetCard, Offline };

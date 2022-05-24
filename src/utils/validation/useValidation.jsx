@@ -53,7 +53,7 @@ export const useValidation = () => {
     if (!passwordRegex.test(inputState.password)) {
       errorDispatch({
         type: "PASSWORD_ERROR",
-        payload: "Password length should contain minimum 8 characters",
+        payload: "Password should contain minimum 6 characters",
       });
       inputValid = false;
     }
