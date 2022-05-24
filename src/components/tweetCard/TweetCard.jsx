@@ -9,8 +9,6 @@ export const TweetCard = ({ tweet }) => {
     recentTweet: { id, text, created_at },
   } = tweet;
 
-  console.log(created_at)
-
   const formattedText = text.replace(/(?:https?):\/\/[\n\S]+/g, "");
 
   return (
