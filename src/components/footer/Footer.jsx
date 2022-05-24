@@ -2,7 +2,7 @@ import React from "react";
 
 export const Footer = () => {
   return (
-    <footer className="footer__main flex-center">
+    <footer className="footer__main">
       <span className="h4 txt-semibold">
         Made like a 🚀 by{" "}
         <a

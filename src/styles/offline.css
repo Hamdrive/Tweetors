@@ -1,0 +1,24 @@
+.offline__main{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+}
+
+.offline__illustration{
+    width: 15rem;
+    height: 15rem;
+}
+
+.offline__illustration img{
+    width: 100%;
+    height: 100%;
+}
+
+.offline__primarytxt{
+    font-size: 1.25rem;
+}
+

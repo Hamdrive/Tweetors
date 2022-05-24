@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   height: 35rem;
-  padding: var(--size-7) var(--size-7);
+  padding: 0.75rem;
   background-color: var(--color-dim);
   color: var(--color-white);
 }
@@ -253,13 +253,23 @@
 }
 
 .footer__main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: absolute;
   bottom: 0;
   left: 0;
   width: 100%;
-  height: var(--size-15);
+  height: 2.5rem;
   background-color: var(--primary-color);
   color: var(--color-white);
+}
+
+.footer__main span{
+  font-size: 1.25rem;
+  font-weight: 600;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
 }
 
 .footer__external:hover {
